@@ -1,5 +1,5 @@
-<div class="grid grid-cols-2 gap-4">
-  <%= form_with url: "/", method: :get do |form| %>
+<div class="flex flex-row w-full space-x-4">
+  <%= form_with url: "/", method: :get, class: "basis-1/4" do |form| %>
     <div class="mb-2">
       <label for="search" class="block text-sm mb-2">Character search</label>
       <div class="relative">
@@ -9,7 +9,7 @@
     </div>
     <%= form.submit "Search", class: "py-2 px-2 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
   <% end %>
-  <div class="w-full">
+  <div class="basis-3/4 flex justify-center">
     <% if @character_data %>
       <pre>
         <code>
@@ -17,7 +17,7 @@
         </code>
       </pre>
     <% else %>
-      <h2>Result</h2>
+      <h2>Warcraftlogs rankings result displays here</h2>
     <% end %>
   </div>
 </div>
