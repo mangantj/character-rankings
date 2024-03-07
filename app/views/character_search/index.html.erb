@@ -11,7 +11,7 @@
   </div>
 
   <div class="flex flex-col mx-auto border rounded-xl p-6">
-    <%= form_with url: "/", method: :get, class: "basis-1/4" do |form| %>
+    <%= form_with url: "/", method: :get, class: "basis-1/4", data: {turbo_stream: "", turbo_frame: "character_search_result"} do |form| %>
       <div class="mb-2">
         <label for="search" class="block text-sm mb-2">Character search</label>
         <div class="flex space-x-2">
@@ -23,14 +23,16 @@
       <%#= form.submit "Search", class: "py-2 px-2 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
     <% end %>
     <div class="basis-3/4 flex justify-center">
-      <% if @character_data %>
-        <pre>
-          <code>
-            <%= JSON.pretty_generate(@character_data) %>
-          </code>
-        </pre>
-      <% else %>
-        <h2>Warcraftlogs rankings result displays here</h2>
+      <%= turbo_frame_tag "character_search_result" do %>
+        <% if @character_data %>
+          <pre>
+            <code>
+              <%= JSON.pretty_generate(@character_data) %>
+            </code>
+          </pre>
+        <% else %>
+          <h2>Warcraftlogs rankings result displays here</h2>
+        <% end %>
       <% end %>
     </div>
   </div>
