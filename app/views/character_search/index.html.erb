@@ -21,16 +21,23 @@
           </div>
           <%# <p class="hidden text-xs text-red-600 mt-2" id="search-error">Please include a valid email address so we can get back to you</p> %>
         </div>
-        <%#= form.submit "Search", class: "py-2 px-2 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
       <% end %>
-      <div class="flex justify-center">
-        <%= turbo_frame_tag "character_search_result" do %>
+      <div class="flex w-full">
+        <%= turbo_frame_tag "character_search_result", class: "relative" do %>
           <% if @character_data %>
-            <pre>
-              <code>
-                <%= JSON.pretty_generate(@character_data) %>
-              </code>
-            </pre>
+            <%# <pre> %>
+              <%# <code> %>
+                <%#= JSON.pretty_generate(@character_data) %>
+              <%# </code> %>
+            <%# </pre> %>
+            <ul class="list-disc relative">
+              <% character_rankings.each do |boss_rank| %>
+                <li class="flex">
+                  <span class="font-bold pr-5"><%= boss_rank["encounter"]["name"] %></span>
+                  <span class="ml-auto"><%= number_with_precision(boss_rank["rankPercent"], precision: 2) %></span>
+                </li>
+              <% end %>
+            </ul>
           <% else %>
             <h2 class="text-sm">Warcraftlogs rankings results</h2>
           <% end %>
