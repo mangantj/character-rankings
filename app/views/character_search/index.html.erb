@@ -1,39 +1,41 @@
-<div class="flex flex-col mx-auto">
-  <div class="max-w-xl mx-auto mb-6">
-    <div class="text-center">
-      <h1 class="text-3xl font-bold text-gray-800 sm:text-4x">
-        SoD Warcraftlogs Rankings 
-      </h1>
-      <p class="mt-1 text-gray-600 dark:text-gray-400">
-        What be your ranking?
-      </p>
-    </div>
-  </div>
-
-  <div class="flex flex-col mx-auto border rounded-xl p-6">
-    <%= form_with url: "/", method: :get, class: "basis-1/4", data: {turbo_stream: "", turbo_frame: "character_search_result"} do |form| %>
-      <div class="mb-2">
-        <label for="search" class="block text-sm mb-2">Character search</label>
-        <div class="flex space-x-2">
-          <input value="<%= params[:search] %>" type="text" id="search" name="search" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" required aria-describedby="search-error">
-          <%= form.submit "Search", class: "py-2 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
-        </div>
-        <%# <p class="hidden text-xs text-red-600 mt-2" id="search-error">Please include a valid email address so we can get back to you</p> %>
+<div class="flex justify-center w-full">
+  <div class="flex flex-col">
+    <div class="max-w-xl mx-auto mb-6">
+      <div class="text-center">
+        <h1 class="text-3xl font-bold text-gray-800 sm:text-4x">
+          SoD Warcraftlogs Rankings 
+        </h1>
+        <p class="mt-1 text-gray-600 dark:text-gray-400">
+          What be your ranking?
+        </p>
       </div>
-      <%#= form.submit "Search", class: "py-2 px-2 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
-    <% end %>
-    <div class="basis-3/4 flex justify-center">
-      <%= turbo_frame_tag "character_search_result" do %>
-        <% if @character_data %>
-          <pre>
-            <code>
-              <%= JSON.pretty_generate(@character_data) %>
-            </code>
-          </pre>
-        <% else %>
-          <h2>Warcraftlogs rankings result displays here</h2>
-        <% end %>
+    </div>
+
+    <div class="flex flex-col mx-auto border rounded-xl py-6 px-16 gap-4">
+      <%= form_with url: "/", method: :get, class: "", data: {turbo_stream: "", turbo_frame: "character_search_result"} do |form| %>
+        <div class="mb-2">
+          <label for="search" class="block text-sm mb-2">Character search</label>
+          <div class="flex space-x-2">
+            <input value="<%= params[:search] %>" type="text" id="search" name="search" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" required aria-describedby="search-error">
+            <%= form.submit "Search", class: "py-2 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
+          </div>
+          <%# <p class="hidden text-xs text-red-600 mt-2" id="search-error">Please include a valid email address so we can get back to you</p> %>
+        </div>
+        <%#= form.submit "Search", class: "py-2 px-2 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
       <% end %>
+      <div class="flex justify-center">
+        <%= turbo_frame_tag "character_search_result" do %>
+          <% if @character_data %>
+            <pre>
+              <code>
+                <%= JSON.pretty_generate(@character_data) %>
+              </code>
+            </pre>
+          <% else %>
+            <h2 class="text-sm">Warcraftlogs rankings results</h2>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
