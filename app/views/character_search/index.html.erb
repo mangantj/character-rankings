@@ -3,7 +3,7 @@
     <div class="max-w-xl mx-auto mb-6">
       <div class="text-center">
         <h1 class="text-3xl font-bold text-gray-800 sm:text-4x">
-          SoD Warcraftlogs Rankings 
+          <%= link_to "SoD Warcraftlogs Rankings", "/" %>
         </h1>
         <p class="mt-1 text-gray-600 dark:text-gray-400">
           What be your ranking?
@@ -39,7 +39,7 @@
                       <%= image_tag boss_rank["encounter"]["name"].split(" ")[0].downcase, class: "max-w-10" %>
                       <span class="ml-2"><%= boss_rank["encounter"]["name"] %></span>
                     </td>
-                    <td class="ml-auto w-24 text-center"><%= number_with_precision(boss_rank["rankPercent"], precision: 2) %></td>
+                    <td class="ml-auto w-24 text-center" style="color:<%= parse_color(boss_rank["allStars"]["rankPercent"]) %>"><%= number_with_precision(boss_rank["allStars"]["rankPercent"], precision: 2) %></td>
                   </tr>
                 <% end %>
               </tbody>
