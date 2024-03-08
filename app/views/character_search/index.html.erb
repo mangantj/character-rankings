@@ -1,5 +1,5 @@
 <div class="flex justify-center w-full">
-  <div class="flex flex-col w-1/2">
+  <div class="flex flex-col w-2/5">
     <div class="max-w-xl mx-auto mb-6">
       <div class="text-center">
         <h1 class="text-3xl font-bold text-gray-800 sm:text-4x">
@@ -22,7 +22,7 @@
           <%# <p class="hidden text-xs text-red-600 mt-2" id="search-error">Please include a valid email address so we can get back to you</p> %>
         </div>
       <% end %>
-      <div class="flex w-full">
+      <div class="<%= class_names("flex w-full", "justify-center": @character_data) %>
         <%= turbo_frame_tag "character_search_result", class: "relative" do %>
           <% if @character_data %>
             <table class="min-w-full divide-y divide-gray-200 table-auto">
