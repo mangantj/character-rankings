@@ -1,5 +1,5 @@
 <div class="flex justify-center w-full">
-  <div class="flex flex-col">
+  <div class="flex flex-col w-1/2">
     <div class="max-w-xl mx-auto mb-6">
       <div class="text-center">
         <h1 class="text-3xl font-bold text-gray-800 sm:text-4x">
@@ -11,7 +11,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col mx-auto border rounded-xl py-6 px-16 gap-4">
+    <div class="flex flex-col mx-auto border rounded-xl py-6 px-16 gap-4 w-full">
       <%= form_with url: "/", method: :get, class: "", data: {turbo_stream: "", turbo_frame: "character_search_result"} do |form| %>
         <div class="mb-2">
           <label for="search" class="block text-sm mb-2">Character search</label>
