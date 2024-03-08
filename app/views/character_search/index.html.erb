@@ -25,19 +25,22 @@
       <div class="flex w-full">
         <%= turbo_frame_tag "character_search_result", class: "relative" do %>
           <% if @character_data %>
-            <%# <pre> %>
-              <%# <code> %>
-                <%#= JSON.pretty_generate(@character_data) %>
-              <%# </code> %>
-            <%# </pre> %>
-            <ul class="list-disc relative">
-              <% character_rankings.each do |boss_rank| %>
-                <li class="flex">
-                  <span class="font-bold pr-5"><%= boss_rank["encounter"]["name"] %></span>
-                  <span class="ml-auto"><%= number_with_precision(boss_rank["rankPercent"], precision: 2) %></span>
-                </li>
-              <% end %>
-            </ul>
+            <table class="min-w-full divide-y divide-gray-200 table-auto">
+              <thead>
+                <tr>
+                  <th class="text-center">Boss</th>
+                  <th class="text-center">Best %</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% character_rankings.each do |boss_rank| %>
+                  <tr class="border">
+                    <td class="pr-5 border"><%= boss_rank["encounter"]["name"] %></td>
+                    <td class="ml-auto w-24 text-center"><%= number_with_precision(boss_rank["rankPercent"], precision: 2) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           <% else %>
             <h2 class="text-sm">Warcraftlogs rankings results</h2>
           <% end %>
