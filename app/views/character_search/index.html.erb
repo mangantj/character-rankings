@@ -35,7 +35,10 @@
               <tbody>
                 <% character_rankings.each do |boss_rank| %>
                   <tr class="border">
-                    <td class="pr-5 border"><%= boss_rank["encounter"]["name"] %></td>
+                    <td class="pr-5 border-r flex items-center">
+                      <%= image_tag boss_rank["encounter"]["name"].split(" ")[0].downcase, class: "max-w-10" %>
+                      <span class="ml-2"><%= boss_rank["encounter"]["name"] %></span>
+                    </td>
                     <td class="ml-auto w-24 text-center"><%= number_with_precision(boss_rank["rankPercent"], precision: 2) %></td>
                   </tr>
                 <% end %>
