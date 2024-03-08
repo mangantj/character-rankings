@@ -44,6 +44,8 @@
                 <% end %>
               </tbody>
             </table>
+          <% elsif params[:search].present? %>
+            <h2 class="text-sm">No results for this character name</h2>
           <% else %>
             <h2 class="text-sm">See your Warcraftlogs rankings results</h2>
           <% end %>
