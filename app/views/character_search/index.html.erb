@@ -36,7 +36,8 @@
                 <% character_rankings.each do |boss_rank| %>
                   <tr class="border">
                     <td class="pr-5 border-r flex items-center">
-                      <%= image_tag boss_rank["encounter"]["name"].split(" ")[0].downcase, class: "max-w-10" %>
+                      <% boss = boss_rank["encounter"]["name"].split(" ")[0].downcase %>
+                      <%= image_tag "#{boss}.jpeg", class: "max-w-10" %>
                       <span class="ml-2"><%= boss_rank["encounter"]["name"] %></span>
                     </td>
                     <td class="ml-auto w-24 text-center" style="color:<%= parse_color(boss_rank["allStars"]["rankPercent"]) %>"><%= number_with_precision(boss_rank["allStars"]["rankPercent"], precision: 2) %></td>
